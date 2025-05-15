@@ -1,9 +1,11 @@
 FROM node:alpine
 
+COPY package.json package-lock.json ./
+
 RUN npm install -g @angular/cli
 
 WORKDIR /usr/src/app
 
-EXPOSE 4200
+COPY . /usr/src/app
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+EXPOSE 4200
